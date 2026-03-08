@@ -32,13 +32,14 @@ toggleBtn.addEventListener('change', function() {
   if (this.checked) {
 
     console.log("Chế độ vẽ: ON");
-    window.addEventListener('mousedown', handleMouseDown);
-    window.addEventListener('mouseup', handleMouseUp);
+    window.addEventListener('pointerdown', handleMouseDown);
+    window.addEventListener('pointerup', handleMouseUp);
     } else {
     console.log("Chế độ vẽ: OFF");
     // Quan trọng: Gỡ bỏ sự kiện khi tắt nút
     console.log(item_list)
-    window.removeEventListener('mousedown', handleMouseDown);
-    window.removeEventListener('mouseup', handleMouseUp);
+    window.removeEventListener('pointerdown', handleMouseDown);
+    window.removeEventListener('pointerup', handleMouseUp);
+
   }
 });
