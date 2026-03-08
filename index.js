@@ -77,23 +77,49 @@ const add_physic = (item) => {
 
 }
 const check_item = (e) => {
-    item_list.forEach((item) => {
-        // Tính khoảng cách từ chuột tới tâm x, y
-        let dx = e.clientX - item.x;
-        let dy = e.clientY - item.y;
-        let distance = Math.sqrt(dx * dx + dy * dy);
 
-        // Giả sử bán kính là 40
-        if (distance <= 40) { 
-            item.is_hold = true;
+    let clientX , clientY
+    if (e.type.includes('touch')){
+        clientX = e.touches[0].clientX
+        clientY = e.touches[0].clientY
+    }
+    else{
+        clientX = e.clientX
+        clientY = e.clientY    
+    }
+
+    let x = clientX 
+    let y = clientY 
+
+    item_list.forEach((item) => {
+
+        let dx = x - item.x
+        let dy = y - item.y
+        let distance = Math.sqrt(dx * dx + dy * dy)
+
+        if (distance <= 40){ 
+            item.is_hold = true
         }
-    });
+
+    })
 }
 const move_object = (e)=>{
+
+    let clientX , clientY
+    if (e.type.includes('touch')){
+        clientX = e.touches[0].clientX
+        clientY = e.touches[0].clientY
+    }
+    else{
+        clientX = e.clientX
+        clientY = e.clientY    
+    }
+    let x = clientX 
+    let y = clientY 
     item_list.forEach((item)=>{
         if (item.is_hold){
-            item.x = e.clientX
-            item.y = e.clientY
+            item.x = x
+            item.y = y
         }
     })
 }
@@ -136,8 +162,15 @@ window.addEventListener("pointerup",()=>{
         item.is_hold = false
     })
 })
+window.addEventListener("touchstart",(e)=>{check_item(e)})
+window.addEventListener("touchmove",(e)=>{move_object(e)})
+window.addEventListener("touchend",()=>{
+    item_list.forEach((item)=>{
+        item.is_hold = false
+    })
+})
+
 create_box()
 create_triangle()
 create_circle()
-
 update()
