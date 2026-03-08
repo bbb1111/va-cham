@@ -1,0 +1,89 @@
+
+body {
+    background: #f0f2f5;
+    display: flex;
+    margin:0;
+    overflow:hidden;
+}
+canvas{
+	display:box;
+}
+.tool_box{
+	display: block;
+	position: absolute;
+}
+
+
+.box{
+	left:90px;
+	top: 90px;
+	width: 80px;
+    height: 80px;
+    background-color: #ff4757;
+    border-radius: 12px;
+    position: absolute;
+    cursor: move;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    touch-action: none;
+}
+.ground{
+	position: absolute;
+	height: 25%;
+	top:75%;
+	width: 100%;
+	background-color: #81572A;
+}
+.grass{
+	position: absolute;
+	height: 10%;
+	top : 75%;
+	width: 100%;
+	background-color: #82a263;
+}
+/* Khung bao quanh nút */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Ẩn checkbox mặc định */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Nền của nút gạt */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 34px;
+}
+
+/* Nút tròn di chuyển bên trong */
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+/* Khi checkbox được check (ON) */
+input:checked + .slider {
+  background-color: #2196F3; /* Màu xanh khi bật */
+}
+
+/* Di chuyển nút tròn sang phải khi ON */
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
