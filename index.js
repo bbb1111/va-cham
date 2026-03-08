@@ -129,10 +129,15 @@ const update = () => {
 
 
 
-window.addEventListener('mousedown',(e) => {check_item(e)})
-window.addEventListener('mousemove',(e) => {move_object(e)})
-window.addEventListener('mouseup',(e) => {item_list.forEach((item)=> {item.is_hold=false})})
+window.addEventListener("pointerdown",(e)=>{check_item(e)})
+window.addEventListener("pointermove",(e)=>{move_object(e)})
+window.addEventListener("pointerup",()=>{
+    item_list.forEach((item)=>{
+        item.is_hold = false
+    })
+})
 create_box()
 create_triangle()
 create_circle()
+
 update()
